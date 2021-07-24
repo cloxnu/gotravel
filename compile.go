@@ -17,13 +17,29 @@ type CompileData struct {
 }
 
 func Compile()  {
+	createOutputDirectory()
+	copyResources()
+
 	var err error
 	tmpl, err = template.ParseFS(templateFS, "template/*.gohtml")
 	if err != nil {
 		panic(err)
 	}
 
-	compileLoading()
+	//compileLoading()
+}
+
+func createOutputDirectory() {
+	err := os.Mkdir(conf.Out, os.ModePerm)
+	if err != nil {
+		return
+	}
+}
+
+func copyResources()  {
+	CopyRes("art")
+	CopyRes("font")
+	CopyRes("home")
 }
 
 func compileLoading()  {
