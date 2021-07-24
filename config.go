@@ -7,6 +7,7 @@ import (
 )
 
 type Conf struct {
+	Version string `yaml:"version"`
 	Top string `yaml:"top"`
 }
 
