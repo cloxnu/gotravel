@@ -1,2 +1,5 @@
+#base_url: https://cdn.jsdelivr.net/gh/cloxnu/travelblog@2021022802/
+base_url:
 top: 20180808
-version: 2021022802
+content: content/
+out: docs/

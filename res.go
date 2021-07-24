@@ -6,18 +6,16 @@ import (
 )
 
 //go:embed res
-var res embed.FS
+var resFS embed.FS
 
 type Res struct {
-	BaseUrl string `yaml:"base_url"`
 	Home map[string]string `yaml:"home"`
 	Art map[string]string `yaml:"art"`
 	Font map[string]string `yaml:"font"`
-	Content string `yaml:"content"`
 }
 
 func (r *Res) load()  {
-	file, err := res.ReadFile("res/res.yaml")
+	file, err := resFS.ReadFile("res/res.yaml")
 	if err != nil {
 		panic(err)
 	}

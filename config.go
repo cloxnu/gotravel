@@ -7,8 +7,10 @@ import (
 )
 
 type Conf struct {
-	Version string `yaml:"version"`
+	BaseUrl string `yaml:"base_url"`
 	Top string `yaml:"top"`
+	Content string `yaml:"content"`
+	Out string `yaml:"out"`
 }
 
 func (c *Conf) load()  {

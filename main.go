@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
+var (
+	res = Res{}
+	conf = Conf{}
+)
 
 func main() {
-	res := Res{}
 	res.load()
-	fmt.Println(res)
+	conf.load()
+	Compile()
 }
