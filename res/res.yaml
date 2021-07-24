@@ -1,0 +1,41 @@
+baseUrl: https://cdn.jsdelivr.net/gh/cloxnu/travelblog@2021022802/
+home:
+  travelDogIconHome: res/home/travelDogIconHome.png
+  travelDogIconHomeWhite: res/home/travelDogIconHome_white.png
+  travelDog: res/home/travelDog.svg
+  travelDogWhite: res/home/travelDog_white.svg
+  downarrow: res/home/downarrow.svg
+  dog: res/home/dog.svg
+  sun: res/home/sun.svg
+  moon: res/home/moon.svg
+  head_video2: res/home/head3.mp4
+  head_video2_poster: res/home/head3.jpg
+  planet1: res/home/planet1.svg
+  planet2: res/home/planet2.svg
+  planet1_shadow: res/home/planet1_shadow.svg
+  planet2_shadow: res/home/planet2_shadow.svg
+  arrow_right: res/home/arrow_right.svg
+  layout_button_fill: res/home/layout_button_fill.svg
+  layout_button: res/home/layout_button.svg
+  grid: res/home/grid.svg
+  list: res/home/list.svg
+art:
+  down_triangle: res/art/down_triangle.svg
+  image: res/art/image.svg
+font:
+  FZYanSJW: res/font/FZYanSJW.woff2
+  FZYanSJWBold: res/font/FZYanSJWBold.woff2
+  Kano: res/font/Kano.otf
+  Recursive: res/font/Recursive.woff2
+  Recursive-Light: res/font/Recursive-Light.ttf
+  Recursive-Regular: res/font/Recursive-Regular.ttf
+  Recursive-Bold: res/font/Recursive-Bold.ttf
+  Recursive-Black: res/font/Recursive-Black.ttf
+  Poppins: res/font/Poppins.ttf
+  Poppins-Regular: res/font/Poppins-Regular.ttf
+  Poppins-SemiBold: res/font/Poppins-SemiBold.ttf
+  Poppins-Bold: res/font/Poppins-Bold.ttf
+  Poppins-Black: res/font/Poppins-Black.ttf
+  FiraMono-Medium: res/font/FiraMono-Medium.ttf
+  Gotham-Medium: res/font/Gotham-Medium.ttf
+content: content/
