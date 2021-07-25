@@ -14,6 +14,7 @@ var tmpl *template.Template
 type CompileData struct {
 	Conf Conf
 	Res Res
+	Stories []Story
 }
 
 func Compile()  {
@@ -50,7 +51,7 @@ func compileHome()  {
 		panic(err)
 	}
 
-	err = tmpl.ExecuteTemplate(file, "home.gohtml", CompileData{Conf: conf, Res: res})
+	err = tmpl.ExecuteTemplate(file, "home.gohtml", CompileData{Conf: conf, Res: res, Stories: stories})
 	if err != nil {
 		panic(err)
 	}

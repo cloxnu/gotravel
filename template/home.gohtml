@@ -132,7 +132,27 @@
         <span class="btn-shelter"></span>
     </a>
 </div>
-<div id="blog-div" style="display: none"></div>
+<div id="blog-div" {{ if eq (len .Stories) 0 }} style="display: none" {{ end }}>
+    {{ range $idx, $ele := .Stories }}
+    <div id="blog-{{$idx}}-div" class="cover-style-2 ${reverse_class} blog-class-{{.Class}}"
+         style="--style2-h-in-w500: {{ if eq (len $ele.Cover) 0 }} 50vh {{ else }} 100vh {{ end }}">
+        <hr class="cover-hr" style="opacity: {{ if eq $idx 0 }} 0 {{ else }} 1 {{ end }}">
+        <a id="blog-{{$idx}}-cover-link" class="cover-image-link transition" href="{{ .Dir }}" style="display: {{ if eq (len .Cover) 0 }} none {{ else }} block {{ end }}">
+            <img src="{{ .Cover }}" id="blog-{{$idx}}-cover" class="cover-image"/>
+        </a>
+        <div id="blog-{{$idx}}-text" class="cover-text">
+            <span id="blog-{{$idx}}-class" class="cover-class" style="color: var(--orange)">{{ .Class }}</span>
+            <a id="blog-{{$idx}}-title" href="{{ .Dir }}" class="cover-title transition">{{ .Title }}</a>
+            <span id="blog-{{$idx}}-date" class="cover-date">{{ $ele.StoryDate }}</span>
+            <a id="blog-{{$idx}}-desc" href="{{ .Dir }}" class="cover-desc transition">{{ $ele.Description }}</a>
+            <a id="blog-{{$idx}}-link" href="{{ .Dir }}" class="cover-link transition">EXPLORE
+                <img src="{{ $.Conf.BaseUrl }}{{ $.Res.Home.arrow_right }}" id="blog-{{$idx}}-link-img" class="cover-link-img"/>
+            </a>
+        </div>
+        <a id="blog-{{$idx}}-whole-link" class="cover-whole-link transition" href="{{ .Dir }}"></a>
+    </div>
+    {{ end }}
+</div>
 
 {{ template "foot" . }}
 
