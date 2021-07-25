@@ -1,0 +1,12 @@
+{{ define "foot" }}
+<div id="foot-img">
+    {{ template "wave.svg" . }}
+</div>
+<div id="foot">
+    <div id="foot-logo-div">
+        <img id="foot-logo" src="{{ .Conf.BaseUrl }}{{ .Res.Home.travel_dog }}"/>
+        <img id="foot-logo-white" src="{{ .Conf.BaseUrl }}{{ .Res.Home.travel_dog_white }}"/>
+    </div>
+    <span id="foot-copyright">Copyright © 2020-2021 Sidney Liu. All rights reserved.</span>
+</div>
+{{ end }}

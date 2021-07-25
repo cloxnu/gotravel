@@ -1,0 +1,222 @@
+#content {
+    width: 85vw;
+    max-width: 800px;
+    margin: auto;
+}
+
+#content p,
+#content img,
+#content video,
+#content h1,
+#content h2,
+#content h3,
+#content h4,
+#content h5,
+#content h6,
+#content ul,
+#content li
+{
+    /*width: 80vw;*/
+    /*max-width: 800px;*/
+    left: 0;
+    right: 0;
+    /*margin: 20px auto;*/
+    color: var(--foreground-color);
+    font-family: FZYanS, serif;
+    transition: color 0.5s, background-color 0.5s, border 0.5s;
+    -webkit-transition: color 0.5s, background-color 0.5s, border 0.5s;
+}
+
+#content p {
+    font-weight: normal;
+    font-size: 1.1em;
+    line-height: 200%;
+    margin: 16px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+}
+
+#content h1,
+#content h2,
+#content h3,
+#content h4,
+#content h5,
+#content h6
+{
+    font-weight: bold;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #content h1:hover .title-link,
+    #content h2:hover .title-link,
+    #content h3:hover .title-link,
+    #content h4:hover .title-link,
+    #content h5:hover .title-link,
+    #content h6:hover .title-link {
+        opacity: 1;
+    }
+}
+
+#content h1.on-touch .title-link,
+#content h2.on-touch .title-link,
+#content h3.on-touch .title-link,
+#content h4.on-touch .title-link,
+#content h5.on-touch .title-link,
+#content h6.on-touch .title-link {
+    opacity: 1;
+}
+
+
+#content h1 {
+    font-size: 2.4em;
+    margin: 44px auto 24px;
+    border-bottom: solid var(--line-color);
+    padding-bottom: 5px;
+}
+
+#content h2 {
+    font-size: 1.8em;
+    margin: 40px auto 20px;
+    border-bottom: 2px solid var(--line-color);
+    padding-bottom: 5px;
+}
+
+#content h3 {
+    font-size: 1.6em;
+    margin: 36px auto 16px;
+}
+
+#content h4 {
+    font-size: 1.4em;
+    margin: 32px auto 16px;
+}
+
+#content h5 {
+    font-size: 1.2em;
+    margin: 26px auto 16px;
+}
+
+#content h6 {
+    font-size: 1em;
+    margin: 26px auto 16px;
+}
+
+#content ul {
+    font-size: 1em;
+    margin: 16px auto;
+}
+
+#content li {
+    font-size: 1em;
+    margin: 16px auto;
+}
+
+#content hr {
+    border: 1px solid var(--line-color);
+    width: 50vw;
+    max-width: 400px;
+    margin: 50px auto;
+    transition: border 0.5s;
+    -webkit-transition: border 0.5s;
+}
+
+#content img {
+    margin: 10px auto;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: width 0.5s, margin 0.5s;
+    -webkit-transition: width 0.5s, margin 0.5s;
+}
+
+#content.thumbnail4 img {
+    cursor: pointer;
+    margin: 1%;
+    width: 23%;
+    object-fit: contain;
+    object-position: center;
+}
+
+#content.thumbnail2 img {
+    cursor: pointer;
+    margin: 1%;
+    width: 48%;
+    object-fit: contain;
+    object-position: center;
+}
+
+#content.thumbnail4 img.checked,
+#content.thumbnail2 img.checked {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+
+#content video {
+    width: 100%;
+    display: block;
+    margin: 0px auto;
+}
+
+#content blockquote {
+    margin: 20px auto;
+    background-color: var(--quote-bgcolor);
+    border-radius: 5px;
+    padding: 15px;
+    width: calc(80vw - 30px);
+    max-width: 770px;
+    transition: color 0.5s, background-color 0.5s;
+    -webkit-transition: color 0.5s, background-color 0.5s;
+}
+
+#content blockquote p {
+    width: auto;
+    color: var(--quote-fgcolor);
+    margin: 0;
+}
+
+#content a {
+    text-decoration: none;
+    color: var(--blue);
+}
+
+
+
+.title-link {
+    position: absolute;
+    margin: auto;
+    height: 18px;
+    width: 18px;
+    transform: translateX(-30px);
+    opacity: 0;
+    transition: opacity 0.3s;
+    -webkit-transition: opacity 0.3s;
+}
+
+@media screen and (max-width: 500px) {
+    .title-link {
+        height: 14px;
+        width: 14px;
+        transform: translateX(-20px);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .title-link {
+        height: 14px;
+        width: 14px;
+        transform: translateX(-18px);
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .title-link {
+        height: 10px;
+        width: 10px;
+        transform: translateX(-14px);
+    }
+}

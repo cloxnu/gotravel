@@ -1,0 +1,168 @@
+.dark-mode-off {
+    --background-color: #FFF;
+    --foreground-color: #000;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --dark-mode-btn-bgcolor: rgb(240, 240, 240);
+    --quote-bgcolor: rgb(240, 240, 240);
+    --quote-fgcolor: rgb(100, 100, 100);
+    --line-color: rgb(230, 230, 230);
+    --black-foreground-opacity: 1;
+    --white-foreground-opacity: 0;
+    --black-shelter-opacity: 0;
+    --white-shelter-opacity: 0.3;
+    --dark-mode-icon-flip: 180deg;
+    --foreground-brightness: 0%;
+    --background-brightness: 100%;
+    --light-grey-brightness: 90%;
+    --button-bgcolor: rgb(240, 240, 240);
+    --button-highlight-bgcolor: rgb(220, 220, 220);
+
+    --green: rgb(52, 199, 89);
+    --red: rgb(255, 59, 48);
+    --blue: rgb(0, 122, 255);
+    --indigo: rgb(88, 86, 214);
+    --orange: rgb(255, 149, 0);
+    --teal: rgb(90, 200, 250);
+    --light-grey: rgb(209, 209, 214);
+    --light-grey2: rgb(229, 229, 234);
+    --light-grey3: rgb(242, 242, 247);
+    --grey: rgb(142, 142, 147);
+
+    --foot-wave0: rgb(220, 220, 220);
+    --foot-wave1: rgb(230, 230, 230);
+    --foot-wave2: rgb(240, 240, 240);
+}
+
+.dark-mode-on {
+    --background-color: #202020;
+    --foreground-color: #FFF;
+    --shadow-color: rgba(255, 255, 255, 0.05);
+    --dark-mode-btn-bgcolor: rgb(50, 50, 50);
+    --quote-bgcolor: rgb(50, 50, 50);
+    --quote-fgcolor: rgb(200, 200, 200);
+    --line-color: rgb(100, 100, 100);
+    --black-foreground-opacity: 0;
+    --white-foreground-opacity: 1;
+    --black-shelter-opacity: 0.3;
+    --white-shelter-opacity: 0;
+    --dark-mode-icon-flip: 0deg;
+    --foreground-brightness: 100%;
+    --background-brightness: 12.5%;
+    --light-grey-brightness: 10%;
+    --button-bgcolor: rgb(40, 40, 40);
+    --button-highlight-bgcolor: rgb(50, 50, 50);
+
+    --green: rgb(48, 209, 88);
+    --red: rgb(255, 69, 58);
+    --blue: rgb(10, 132, 255);
+    --indigo: rgb(94, 92, 230);
+    --orange: rgb(255, 159, 10);
+    --teal: rgb(100, 210, 255);
+    --light-grey: rgb(58, 58, 60);
+    --light-grey2: rgb(44, 44, 46);
+    --light-grey3: rgb(28, 28, 30);
+    --grey: rgb(142, 142, 147);
+
+    --foot-wave0: rgb(78, 78, 78);
+    --foot-wave1: rgb(64, 64, 64);
+    --foot-wave2: rgb(50, 50, 50);
+}
+
+.black-foreground {
+    opacity: var(--black-foreground-opacity);
+}
+
+.white-foreground {
+    opacity: var(--white-foreground-opacity);
+}
+
+.black-shelter {
+    opacity: var(--black-shelter-opacity);
+}
+
+.white-shelter {
+    opacity: var(--white-shelter-opacity);
+}
+
+div#dark-mode-div {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    perspective: 150px;
+    -webkit-perspective: 150px;
+    overflow: hidden;
+    z-index: 50;
+    transition: width 0.3s, height 0.3s, transform 0.3s;
+    -webkit-transition: width 0.3s, height 0.3s, -webkit-transform 0.3s;
+}
+
+label#dark-mode-label {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: var(--background-color);
+    transform: rotateX(var(--dark-mode-icon-flip));
+    border-radius: 50%;
+    z-index: 50;
+    transition: border-radius 0.3s, transform 0.3s, background-color 0.5s;
+    -webkit-transition: border-radius 0.3s, -webkit-transform 0.3s, background-color 0.5s;
+}
+
+label#dark-mode-label::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+    z-index: 51;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    div#dark-mode-div:hover {
+        width: 60px;
+        height: 60px;
+        transform: translate(-5px, 5px);
+        -webkit-transform: translate(-5px, 5px);
+    }
+    div#dark-mode-div:hover label#dark-mode-label {
+        background-color: var(--dark-mode-btn-bgcolor);
+    }
+}
+
+div#dark-mode-div.on-touch {
+    width: 60px;
+    height: 60px;
+    transform: translate(-5px, 5px);
+    -webkit-transform: translate(-5px, 5px);
+}
+
+div#dark-mode-div.on-touch label#dark-mode-label {
+    background-color: var(--dark-mode-btn-bgcolor);
+}
+
+.dark-mode-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    z-index: 50;
+    transition: opacity 0.3s;
+    -webkit-transition: opacity 0.3s;
+}
+
+input#dark-mode-input {
+    display: none;
+}

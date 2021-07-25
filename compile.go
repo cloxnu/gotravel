@@ -26,7 +26,7 @@ func Compile()  {
 		panic(err)
 	}
 
-	//compileLoading()
+	compileHome()
 }
 
 func createOutputDirectory() {
@@ -40,15 +40,17 @@ func copyResources()  {
 	CopyRes("art")
 	CopyRes("font")
 	CopyRes("home")
+	CopyRes("css")
+	CopyRes("js")
 }
 
-func compileLoading()  {
-	file, err := os.Create("loading.html")
+func compileHome()  {
+	file, err := os.Create(conf.Out + "index.html")
 	if err != nil {
 		panic(err)
 	}
 
-	err = tmpl.ExecuteTemplate(file, "loading.gohtml", CompileData{Conf: conf, Res: res})
+	err = tmpl.ExecuteTemplate(file, "home.gohtml", CompileData{Conf: conf, Res: res})
 	if err != nil {
 		panic(err)
 	}

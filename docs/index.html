@@ -15,14 +15,60 @@
     <meta name="description" content="Sidney Liu (cloxnu) 's travel blog">
     <meta name="keywords" content="Sidney Liu,cloxnu,travel,travel&life">
 
-    {{ template "font" . }}
-{{/*    <script src="read/res.js"></script>*/}}
+    
+<style>
+@font-face {
+    font-family: FZYanS;
+    src: url(res/font/FZYanSJW.woff2) format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: FZYanS;
+    src: url(res/font/FZYanSJWBold.woff2) format('woff2');
+    font-weight: bold;
+}
+
+ 
+ 
+ 
+ 
+
+@font-face {
+    font-family: Recursive;
+    src: url(res/font/Recursive.woff2) format('woff2');
+    font-style: oblique 0deg 15deg;
+    font-weight: 300 1000;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(res/font/Poppins.ttf);
+    font-weight: 300 1000;
+}
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+</style>
+
+
     <script src="res/js/darkmode.js"></script>
     <script src="res/js/loading.js"></script>
     <script src="res/js/read.js"></script>
     <script src="res/js/home.js"></script>
-    <link rel="preload" href="{{ .Conf.BaseUrl }}{{ .Res.Font.FZYanSJW }}" as="font">
-    <link rel="preload" href="{{ .Conf.BaseUrl }}{{ .Res.Font.FZYanSJWBold }}" as="font">
+    <link rel="preload" href="res/font/FZYanSJW.woff2" as="font">
+    <link rel="preload" href="res/font/FZYanSJWBold.woff2" as="font">
     <link rel="stylesheet" type="text/css" href="res/css/darkmode.css"/>
     <link rel="stylesheet" type="text/css" href="res/css/loading.css"/>
     <link rel="stylesheet" type="text/css" href="res/css/home.css"/>
@@ -37,29 +83,48 @@
 <body class="loading touch">
 <script>document.body.classList.add(dark_mode_class_name);</script>
 
-{{ template "darkmodeButton" . }}
-{{ template "loading" . }}
+
+<div id="dark-mode-div" class="touch">
+    <label id="dark-mode-label">
+        <input type="checkbox" id="dark-mode-input" onclick="dark_mode_clicked()">
+        <img id="dark-mode-sun-img" class="dark-mode-img black-foreground" src="res/home/sun.svg"/>
+        <img id="dark-mode-moon-img" class="dark-mode-img white-foreground" src="res/home/moon.svg"/>
+    </label>
+</div>
+
+
+    <div id="loading-wrapper">
+        <span id="loading-shadow"></span>
+        <span id="loading-shelter"></span>
+        <div id="loading-div">
+            <img src="res/home/dog.svg" id="loading-img"/>
+            <span id="loader">
+                <span id="loader-inner"></span>
+            </span>
+        </div>
+    </div>
+
 
 <div id="head">
     <div id="bg-video">
-        <video autoplay muted playsinline loop poster="{{ .Conf.BaseUrl }}{{ .Res.Home.head_video2_poster }}" id="head1">
-        <source src="{{ .Conf.BaseUrl }}{{ .Res.Home.head_video2 }}" type="video/mp4">
+        <video autoplay muted playsinline loop poster="res/home/head3.jpg" id="head1">
+        <source src="res/home/head3.mp4" type="video/mp4">
         </video>
     </div>
     <div id="bg-interact"></div>
     <div id="head-shelter" class="black-shelter"></div>
-    <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.travel_dog_icon_home }}" class="head-logo black-foreground"/>
-    <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.travel_dog_icon_home_white }}" class="head-logo white-foreground"/>
-    <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.downarrow }}" id="head-arrow"/>
+    <img src="res/home/travelDogIconHome.png" class="head-logo black-foreground"/>
+    <img src="res/home/travelDogIconHome_white.png" class="head-logo white-foreground"/>
+    <img src="res/home/downarrow.svg" id="head-arrow"/>
 </div>
 <div id="welcome">
     <div id="welcome-planet1-div">
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.planet1_shadow }}" id="welcome-planet1-shadow"/>
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.planet1 }}" id="welcome-planet1"/>
+        <img src="res/home/planet1_shadow.svg" id="welcome-planet1-shadow"/>
+        <img src="res/home/planet1.svg" id="welcome-planet1"/>
     </div>
     <div id="welcome-planet2-div">
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.planet2_shadow }}" id="welcome-planet2-shadow"/>
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.planet2 }}" id="welcome-planet2"/>
+        <img src="res/home/planet2_shadow.svg" id="welcome-planet2-shadow"/>
+        <img src="res/home/planet2.svg" id="welcome-planet2"/>
     </div>
 
     <div id="welcome-p1-wrapper">
@@ -99,7 +164,7 @@
         <div class="cover-text-2">
             <a id="top-desc" class="cover-desc transition"></a>
             <a id="top-link" class="cover-link transition">EXPLORE
-                <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.arrow_right }}" id="top-link-img" class="cover-link-img"/>
+                <img src="res/home/arrow_right.svg" id="top-link-img" class="cover-link-img"/>
             </a>
         </div>
     </div>
@@ -120,21 +185,42 @@
 </div>
 <div id="layout-div">
     <a id="layout-btn-grid" class="img-button-link touch layout-btn active" onclick="layout_btn_clicked('grid')">
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.layout_button_fill }}" class="active-img"/>
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.layout_button }}" class="inactive-img"/>
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.grid }}" class="foreground-img"/>
+        <img src="res/home/layout_button_fill.svg" class="active-img"/>
+        <img src="res/home/layout_button.svg" class="inactive-img"/>
+        <img src="res/home/grid.svg" class="foreground-img"/>
         <span class="btn-shelter"></span>
     </a>
     <a id="layout-btn-list" class="img-button-link touch layout-btn" onclick="layout_btn_clicked('list')">
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.layout_button_fill }}" class="active-img"/>
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.layout_button }}" class="inactive-img"/>
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.list }}" class="foreground-img"/>
+        <img src="res/home/layout_button_fill.svg" class="active-img"/>
+        <img src="res/home/layout_button.svg" class="inactive-img"/>
+        <img src="res/home/list.svg" class="foreground-img"/>
         <span class="btn-shelter"></span>
     </a>
 </div>
 <div id="blog-div" style="display: none"></div>
 
-{{ template "foot" . }}
+
+<div id="foot-img">
+    
+<svg version="1.1" id="wave-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 5238.1 1184.6" style="enable-background:new 0 0 5238.1 1184.6;" xml:space="preserve">
+    <path class="foot-wave0" d="M0,105.3c848.3,84.7,682.7,374.4,1267.4,418.4C1870.2,569,2171-48.1,3069.8,221.5
+	C3782.2,435.1,3722,21.4,4306,0.7c481.7-17,495.4,260.6,932.2,187.3v682.2H0V105.3z"/>
+    <path class="foot-wave1" d="M5238.1,312.6C4389.8,397.3,4555.5,687,3970.7,731c-602.8,45.4-880-484.1-1781-221.1
+	c-584.6,170.6-659.4-193.6-1243.4-214.2C464.7,278.7,436.7,623.4,0,550v527.6h5238.1V312.6z"/>
+    <path class="foot-wave2" d="M0,670c848.3,73.2,688,316.5,1272.8,354.6c602.8,39.2,707-478.6,1888.4-228.9
+	c594,125.5,546.7-336.6,1122.9-409.4c598.5-75.6,649.5,283.7,954.1,341.9v456.4H0V670z"/>
+</svg>
+
+</div>
+<div id="foot">
+    <div id="foot-logo-div">
+        <img id="foot-logo" src="res/home/travelDog.svg"/>
+        <img id="foot-logo-white" src="res/home/travelDog_white.svg"/>
+    </div>
+    <span id="foot-copyright">Copyright © 2020-2021 Sidney Liu. All rights reserved.</span>
+</div>
+
 
 </body>
 

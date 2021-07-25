@@ -1,0 +1,93 @@
+div#foot-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+    margin-bottom: -5px;
+}
+
+#wave-svg {
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+.foot-wave0 {
+    fill: var(--foot-wave0);
+    animation: wave-animation 2s ease-in-out infinite;
+    -webkit-animation: wave-animation 2s ease-in-out infinite;
+}
+
+.foot-wave1 {
+    fill: var(--foot-wave1);
+    animation: wave-animation 2s 0.3s ease-in-out infinite;
+    -webkit-animation: wave-animation 2s 0.3s ease-in-out infinite;
+}
+
+.foot-wave2 {
+    fill: var(--foot-wave2);
+    animation: wave-animation 2s 0.6s ease-in-out infinite;
+    -webkit-animation: wave-animation 2s 0.6s ease-in-out infinite;
+}
+
+.foot-wave0, .foot-wave1, .foot-wave2 {
+    transition: fill 0.5s;
+    -webkit-transition: fill 0.5s;
+}
+
+@keyframes wave-animation {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(30px); }
+    100% { transform: translateY(0px); }
+}
+
+@-webkit-keyframes wave-animation {
+    0% { -webkit-transform: translateY(0px); }
+    50% { -webkit-transform: translateY(30px); }
+    100% { -webkit-transform: translateY(0px); }
+}
+
+div#foot {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    color: var(--grey);
+    background-color: var(--dark-mode-btn-bgcolor);
+    transition: color 0.5s, background-color 0.5s;
+    -webkit-transition: color 0.5s, background-color 0.5s;
+}
+
+div#foot-logo-div {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 10px auto;
+}
+
+img#foot-logo, img#foot-logo-white {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
+}
+
+img#foot-logo {
+    opacity: var(--black-foreground-opacity);
+}
+
+img#foot-logo-white {
+    opacity: var(--white-foreground-opacity);
+}
+
+#foot-copyright {
+    position: relative;
+    margin: 10px auto;
+    font: 550 0.8em Poppins;
+    text-align: center;
+}

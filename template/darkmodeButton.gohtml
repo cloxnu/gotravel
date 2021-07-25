@@ -1,0 +1,9 @@
+{{ define "darkmodeButton" }}
+<div id="dark-mode-div" class="touch">
+    <label id="dark-mode-label">
+        <input type="checkbox" id="dark-mode-input" onclick="dark_mode_clicked()">
+        <img id="dark-mode-sun-img" class="dark-mode-img black-foreground" src="{{ .Conf.BaseUrl }}{{ .Res.Home.sun }}"/>
+        <img id="dark-mode-moon-img" class="dark-mode-img white-foreground" src="{{ .Conf.BaseUrl }}{{ .Res.Home.moon }}"/>
+    </label>
+</div>
+{{ end }}
