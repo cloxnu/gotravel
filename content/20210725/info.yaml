@@ -1,0 +1,12 @@
+dir: 20210725
+class: travel
+title: 东极之行
+cover: cover.jpg
+description: 一路向东
+content: content.md
+story_date: 2021/04/15
+creation_date: 2021/07/25 05:00
+modification_date: 2021/07/25 15:00
+associated:
+  - 2020
+  - 2019

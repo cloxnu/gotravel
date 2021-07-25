@@ -43,3 +43,11 @@ func CopyResFile(filename string) (written int64, err error) {
 
 	return io.Copy(desFile, file)
 }
+
+func IsFileExist(path string) bool {
+	_, err := os.Stat(path)
+	if err != nil && os.IsNotExist(err) {
+		return false
+	}
+	return true
+}
