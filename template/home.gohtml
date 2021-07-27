@@ -88,21 +88,23 @@
     </a>
 </div>
 <div id="top-div" class="cover-style-1 dark-mode-on" {{ if eq (len .Conf.Top) 0 }} style="display: none" {{ end }}>
-    <img src="{{ .Top.CoverPath }}" id="top-cover" class="cover-image"/>
+    {{ with .Top }}
+    <img src="{{ .CoverPath }}" id="top-cover" class="cover-image"/>
     <span id="top-shelter" class="cover-shelter"></span>
-    <p id="top-date" class="cover-date"></p>
+    <p id="top-date" class="cover-date">{{ .StoryDate }}</p>
     <div id="top-text" class="cover-text">
         <div class="cover-text-1">
-            <a id="top-title" class="cover-title transition touch"></a>
-            <p id="top-class" class="cover-class"></p>
+            <a id="top-title" href="{{ .Dir }}" class="cover-title transition touch">{{ .Title }}</a>
+            <p id="top-class" class="cover-class">{{ .Class }}</p>
         </div>
         <div class="cover-text-2">
-            <a id="top-desc" class="cover-desc transition"></a>
-            <a id="top-link" class="cover-link transition">EXPLORE
-                <img src="{{ Url .Res.Home.arrow_right }}" id="top-link-img" class="cover-link-img"/>
+            <a id="top-desc" href="{{ .Dir }}" class="cover-desc transition">{{ .Description }}</a>
+            <a id="top-link" href="{{ .Dir }}" class="cover-link transition">EXPLORE
+                <img src="{{ Url $.Res.Home.arrow_right }}" id="top-link-img" class="cover-link-img"/>
             </a>
         </div>
     </div>
+    {{ end }}
 </div>
 <div id="class-div">
     <a id="class-btn-all" class="button-link touch class-btn active" onclick="class_btn_clicked('all')">

@@ -19,7 +19,7 @@ type Story struct {
 }
 
 func (s *Story) Path() string {
-	return conf.BaseUrl + s.Dir + "/"
+	return conf.BaseUrl + conf.Content + s.Dir + "/"
 }
 
 func (s *Story) CoverPath() string {
