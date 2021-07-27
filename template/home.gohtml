@@ -143,8 +143,8 @@
         <div id="blog-{{$idx}}-text" class="cover-text">
             <span id="blog-{{$idx}}-class" class="cover-class" style="color: var(--orange)">{{ .Class }}</span>
             <a id="blog-{{$idx}}-title" href="{{ .Dir }}" class="cover-title transition">{{ .Title }}</a>
-            <span id="blog-{{$idx}}-date" class="cover-date">{{ $ele.StoryDate }}</span>
-            <a id="blog-{{$idx}}-desc" href="{{ .Dir }}" class="cover-desc transition">{{ $ele.Description }}</a>
+            <span id="blog-{{$idx}}-date" class="cover-date">{{ .StoryDate }}</span>
+            <a id="blog-{{$idx}}-desc" href="{{ .Dir }}" class="cover-desc transition">{{ .Description }}</a>
             <a id="blog-{{$idx}}-link" href="{{ .Dir }}" class="cover-link transition">EXPLORE
                 <img src="{{ $.Conf.BaseUrl }}{{ $.Res.Home.arrow_right }}" id="blog-{{$idx}}-link-img" class="cover-link-img"/>
             </a>
