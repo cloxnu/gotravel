@@ -18,6 +18,14 @@ type Story struct {
 	Associated []string `yaml:"associated"`
 }
 
+func (s *Story) Path() string {
+	return conf.BaseUrl + s.Dir + "/"
+}
+
+func (s *Story) CoverPath() string {
+	return s.Path() + s.Cover
+}
+
 func LoadStories() []Story {
 	stories := make([]Story, 0)
 	
@@ -43,4 +51,21 @@ func LoadStories() []Story {
 	}
 
 	return stories
+}
+
+func LoadStory(dir string) *Story {
+	configFilePath := conf.Content + dir + "/info.yaml"
+	if IsFileExist(configFilePath) {
+		story := &Story{}
+		configFile, err := ioutil.ReadFile(configFilePath)
+		if err != nil {
+			panic(err)
+		}
+		err = yaml.Unmarshal(configFile, story)
+		if err != nil {
+			panic(err)
+		}
+		return story
+	}
+	return nil
 }

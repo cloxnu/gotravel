@@ -21,8 +21,8 @@
     <script src="res/js/loading.js"></script>
     <script src="res/js/read.js"></script>
     <script src="res/js/home.js"></script>
-    <link rel="preload" href="{{ .Conf.BaseUrl }}{{ .Res.Font.FZYanSJW }}" as="font">
-    <link rel="preload" href="{{ .Conf.BaseUrl }}{{ .Res.Font.FZYanSJWBold }}" as="font">
+    <link rel="preload" href="{{ Url .Res.Font.FZYanSJW }}" as="font">
+    <link rel="preload" href="{{ Url .Res.Font.FZYanSJWBold }}" as="font">
     <link rel="stylesheet" type="text/css" href="res/css/darkmode.css"/>
     <link rel="stylesheet" type="text/css" href="res/css/loading.css"/>
     <link rel="stylesheet" type="text/css" href="res/css/home.css"/>
@@ -42,24 +42,24 @@
 
 <div id="head">
     <div id="bg-video">
-        <video autoplay muted playsinline loop poster="{{ .Conf.BaseUrl }}{{ .Res.Home.head_video2_poster }}" id="head1">
-        <source src="{{ .Conf.BaseUrl }}{{ .Res.Home.head_video2 }}" type="video/mp4">
+        <video autoplay muted playsinline loop poster="{{ Url .Res.Home.head_video2_poster }}" id="head1">
+        <source src="{{ Url .Res.Home.head_video2 }}" type="video/mp4">
         </video>
     </div>
     <div id="bg-interact"></div>
     <div id="head-shelter" class="black-shelter"></div>
-    <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.travel_dog_icon_home }}" class="head-logo black-foreground"/>
-    <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.travel_dog_icon_home_white }}" class="head-logo white-foreground"/>
-    <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.downarrow }}" id="head-arrow"/>
+    <img src="{{ Url .Res.Home.travel_dog_icon_home }}" class="head-logo black-foreground"/>
+    <img src="{{ Url .Res.Home.travel_dog_icon_home_white }}" class="head-logo white-foreground"/>
+    <img src="{{ Url .Res.Home.downarrow }}" id="head-arrow"/>
 </div>
 <div id="welcome">
     <div id="welcome-planet1-div">
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.planet1_shadow }}" id="welcome-planet1-shadow"/>
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.planet1 }}" id="welcome-planet1"/>
+        <img src="{{ Url .Res.Home.planet1_shadow }}" id="welcome-planet1-shadow"/>
+        <img src="{{ Url .Res.Home.planet1 }}" id="welcome-planet1"/>
     </div>
     <div id="welcome-planet2-div">
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.planet2_shadow }}" id="welcome-planet2-shadow"/>
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.planet2 }}" id="welcome-planet2"/>
+        <img src="{{ Url .Res.Home.planet2_shadow }}" id="welcome-planet2-shadow"/>
+        <img src="{{ Url .Res.Home.planet2 }}" id="welcome-planet2"/>
     </div>
 
     <div id="welcome-p1-wrapper">
@@ -87,8 +87,8 @@
         <p class="western">ABOUT ME</p>
     </a>
 </div>
-<div id="top-div" class="cover-style-1 dark-mode-on" style="display: none">
-    <img src="" id="top-cover" class="cover-image"/>
+<div id="top-div" class="cover-style-1 dark-mode-on" {{ if eq (len .Conf.Top) 0 }} style="display: none" {{ end }}>
+    <img src="{{ .Top.CoverPath }}" id="top-cover" class="cover-image"/>
     <span id="top-shelter" class="cover-shelter"></span>
     <p id="top-date" class="cover-date"></p>
     <div id="top-text" class="cover-text">
@@ -99,7 +99,7 @@
         <div class="cover-text-2">
             <a id="top-desc" class="cover-desc transition"></a>
             <a id="top-link" class="cover-link transition">EXPLORE
-                <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.arrow_right }}" id="top-link-img" class="cover-link-img"/>
+                <img src="{{ Url .Res.Home.arrow_right }}" id="top-link-img" class="cover-link-img"/>
             </a>
         </div>
     </div>
@@ -120,15 +120,15 @@
 </div>
 <div id="layout-div">
     <a id="layout-btn-grid" class="img-button-link touch layout-btn active" onclick="layout_btn_clicked('grid')">
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.layout_button_fill }}" class="active-img"/>
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.layout_button }}" class="inactive-img"/>
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.grid }}" class="foreground-img"/>
+        <img src="{{ Url .Res.Home.layout_button_fill }}" class="active-img"/>
+        <img src="{{ Url .Res.Home.layout_button }}" class="inactive-img"/>
+        <img src="{{ Url .Res.Home.grid }}" class="foreground-img"/>
         <span class="btn-shelter"></span>
     </a>
     <a id="layout-btn-list" class="img-button-link touch layout-btn" onclick="layout_btn_clicked('list')">
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.layout_button_fill }}" class="active-img"/>
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.layout_button }}" class="inactive-img"/>
-        <img src="{{ .Conf.BaseUrl }}{{ .Res.Home.list }}" class="foreground-img"/>
+        <img src="{{ Url .Res.Home.layout_button_fill }}" class="active-img"/>
+        <img src="{{ Url .Res.Home.layout_button }}" class="inactive-img"/>
+        <img src="{{ Url .Res.Home.list }}" class="foreground-img"/>
         <span class="btn-shelter"></span>
     </a>
 </div>
@@ -138,7 +138,7 @@
          style="--style2-h-in-w500: {{ if eq (len $ele.Cover) 0 }} 50vh {{ else }} 100vh {{ end }}">
         <hr class="cover-hr" style="opacity: {{ if eq $idx 0 }} 0 {{ else }} 1 {{ end }}">
         <a id="blog-{{$idx}}-cover-link" class="cover-image-link transition" href="{{ .Dir }}" style="display: {{ if eq (len .Cover) 0 }} none {{ else }} block {{ end }}">
-            <img src="{{ .Cover }}" id="blog-{{$idx}}-cover" class="cover-image"/>
+            <img src="{{ .CoverPath }}" id="blog-{{$idx}}-cover" class="cover-image"/>
         </a>
         <div id="blog-{{$idx}}-text" class="cover-text">
             <span id="blog-{{$idx}}-class" class="cover-class" style="color: var(--orange)">{{ .Class }}</span>
@@ -146,7 +146,7 @@
             <span id="blog-{{$idx}}-date" class="cover-date">{{ .StoryDate }}</span>
             <a id="blog-{{$idx}}-desc" href="{{ .Dir }}" class="cover-desc transition">{{ .Description }}</a>
             <a id="blog-{{$idx}}-link" href="{{ .Dir }}" class="cover-link transition">EXPLORE
-                <img src="{{ $.Conf.BaseUrl }}{{ $.Res.Home.arrow_right }}" id="blog-{{$idx}}-link-img" class="cover-link-img"/>
+                <img src="{{ Url $.Res.Home.arrow_right }}" id="blog-{{$idx}}-link-img" class="cover-link-img"/>
             </a>
         </div>
         <a id="blog-{{$idx}}-whole-link" class="cover-whole-link transition" href="{{ .Dir }}"></a>

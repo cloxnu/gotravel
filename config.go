@@ -10,7 +10,6 @@ type Conf struct {
 	BaseUrl string `yaml:"base_url"`
 	Top string `yaml:"top"`
 	Content string `yaml:"content"`
-	Out string `yaml:"out"`
 }
 
 func (c *Conf) load()  {

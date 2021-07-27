@@ -2,14 +2,14 @@
 <style>
 @font-face {
     font-family: FZYanS;
-    src: url({{ .Conf.BaseUrl }}{{ .Res.Font.FZYanSJW }}) format('woff2');
+    src: url("{{ Url .Res.Font.FZYanSJW }}") format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: FZYanS;
-    src: url({{ .Conf.BaseUrl }}{{ .Res.Font.FZYanSJWBold }}) format('woff2');
+    src: url("{{ Url .Res.Font.FZYanSJWBold }}") format('woff2');
     font-weight: bold;
 }
 
@@ -20,7 +20,7 @@
 
 @font-face {
     font-family: Recursive;
-    src: url({{ .Conf.BaseUrl }}{{ .Res.Font.Recursive }}) format('woff2');
+    src: url("{{ Url .Res.Font.Recursive }}") format('woff2');
     font-style: oblique 0deg 15deg;
     font-weight: 300 1000;
     font-display: swap;
@@ -28,7 +28,7 @@
 
 @font-face {
     font-family: Poppins;
-    src: url({{ .Conf.BaseUrl }}{{ .Res.Font.Poppins }});
+    src: url("{{ Url .Res.Font.Poppins }}");
     font-weight: 300 1000;
 }
 

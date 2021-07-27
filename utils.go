@@ -11,7 +11,7 @@ func CopyRes(dir string)  {
 		return
 	}
 
-	err = os.MkdirAll(conf.Out + "res/" + dir, os.ModePerm)
+	err = os.MkdirAll("res/" + dir, os.ModePerm)
 	if err != nil {
 		panic(err)
 	}
@@ -30,7 +30,7 @@ func CopyResFile(filename string) (written int64, err error) {
 		return
 	}
 
-	desFile, err := os.Create(conf.Out + filename)
+	desFile, err := os.Create(filename)
 	if err != nil {
 		return
 	}

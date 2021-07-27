@@ -13,28 +13,23 @@ var tmpl *template.Template
 
 type CompileData struct {
 	Conf Conf
+	Top *Story
 	Res Res
 	Stories []Story
 }
 
 func Compile()  {
-	createOutputDirectory()
 	copyResources()
 
 	var err error
-	tmpl, err = template.ParseFS(templateFS, "template/*.gohtml")
+	tmpl, err = template.New("all_go_html").Funcs(template.FuncMap{
+		"Url": func(path string) string { return conf.BaseUrl + path },
+	}).ParseFS(templateFS, "template/*.gohtml")
 	if err != nil {
 		panic(err)
 	}
 
 	compileHome()
-}
-
-func createOutputDirectory() {
-	err := os.Mkdir(conf.Out, os.ModePerm)
-	if err != nil {
-		return
-	}
 }
 
 func copyResources()  {
@@ -46,12 +41,14 @@ func copyResources()  {
 }
 
 func compileHome()  {
-	file, err := os.Create(conf.Out + "index.html")
+	file, err := os.Create("index.html")
 	if err != nil {
 		panic(err)
 	}
 
-	err = tmpl.ExecuteTemplate(file, "home.gohtml", CompileData{Conf: conf, Res: res, Stories: stories})
+	err = tmpl.Funcs(template.FuncMap{
+		"Url": func(path string) string { return conf.BaseUrl + path },
+	}).ExecuteTemplate(file, "home.gohtml", CompileData{Conf: conf, Top: LoadStory(conf.Top), Res: res, Stories: stories})
 	if err != nil {
 		panic(err)
 	}
