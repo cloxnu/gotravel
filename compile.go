@@ -33,7 +33,7 @@ func Compile()  {
 }
 
 func copyResources()  {
-	CopyRes("art")
+	CopyRes("story")
 	CopyRes("font")
 	CopyRes("home")
 	CopyRes("css")

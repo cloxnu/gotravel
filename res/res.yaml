@@ -20,9 +20,9 @@ home:
   layout_button: res/home/layout_button.svg
   grid: res/home/grid.svg
   list: res/home/list.svg
-art:
-  down_triangle: res/art/down_triangle.svg
-  image: res/art/image.svg
+story:
+  down_triangle: res/story/down_triangle.svg
+  image: res/story/image.svg
 font:
   FZYanSJW: res/font/FZYanSJW.woff2
   FZYanSJWBold: res/font/FZYanSJWBold.woff2

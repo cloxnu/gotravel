@@ -10,7 +10,7 @@ var resFS embed.FS
 
 type Res struct {
 	Home map[string]string `yaml:"home"`
-	Art map[string]string `yaml:"art"`
+	Art map[string]string `yaml:"story"`
 	Font map[string]string `yaml:"font"`
 }
 
