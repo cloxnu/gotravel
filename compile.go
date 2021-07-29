@@ -2,8 +2,11 @@ package main
 
 import (
 	"embed"
+	"github.com/russross/blackfriday/v2"
 	"html/template"
+	"io/ioutil"
 	"os"
+	"path"
 )
 
 //go:embed template
@@ -30,6 +33,7 @@ func Compile()  {
 	}
 
 	compileHome()
+	compileStories()
 }
 
 func copyResources()  {
@@ -51,5 +55,27 @@ func compileHome()  {
 	}).ExecuteTemplate(file, "home.gohtml", CompileData{Conf: conf, Top: LoadStory(conf.Top), Res: res, Stories: stories})
 	if err != nil {
 		panic(err)
+	}
+}
+
+func compileStories()  {
+	for _, story := range stories {
+		storyFile, err := ioutil.ReadFile(path.Join(story.Path(), story.Content))
+		if err != nil {
+			panic(err)
+		}
+
+		err = os.MkdirAll(story.Dir, os.ModePerm)
+		if err != nil {
+			panic(err)
+		}
+
+		blackfriday.HTMLRenderer{}
+		outputHTML := blackfriday.Run(storyFile)
+		err = ioutil.WriteFile(path.Join(story.Dir, "index.html"), outputHTML, os.ModePerm)
+		if err != nil {
+			panic(err)
+		}
+
 	}
 }

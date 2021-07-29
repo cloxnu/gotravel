@@ -3,6 +3,7 @@ package main
 import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
+	"path"
 )
 
 type Story struct {
@@ -19,7 +20,7 @@ type Story struct {
 }
 
 func (s *Story) Path() string {
-	return conf.BaseUrl + conf.Content + s.Dir + "/"
+	return path.Join(conf.BaseUrl, conf.Content, s.Dir)
 }
 
 func (s *Story) CoverPath() string {
