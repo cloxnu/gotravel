@@ -2,6 +2,8 @@ package main
 
 import (
 	"io/ioutil"
+	"net/url"
+	"path"
 
 	"gopkg.in/yaml.v2"
 )
@@ -12,7 +14,7 @@ type Conf struct {
 	Content string `yaml:"content"`
 }
 
-func (c *Conf) load()  {
+func (c *Conf) load() {
 	file, err := ioutil.ReadFile("./info.yaml")
 	if err != nil {
 		panic(err)
@@ -22,4 +24,15 @@ func (c *Conf) load()  {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func Url(p string) string {
+	baseUrl := conf.BaseUrl
+	u, err := url.Parse(baseUrl)
+	if err != nil {
+		panic(err)
+	}
+
+	u.Path = path.Join(u.Path, p)
+	return u.String()
 }
