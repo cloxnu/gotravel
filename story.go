@@ -19,12 +19,12 @@ type Story struct {
 	Associated []string `yaml:"associated"`
 }
 
-func (s *Story) Path() string {
-	return path.Join(conf.BaseUrl, conf.Content, s.Dir)
+func (s *Story) Path(p ...string) string {
+	return Url(conf.Content, s.Dir, path.Join(p...))
 }
 
 func (s *Story) CoverPath() string {
-	return s.Path() + s.Cover
+	return s.Path(s.Cover)
 }
 
 func LoadStories() []Story {

@@ -26,13 +26,13 @@ func (c *Conf) load() {
 	}
 }
 
-func Url(p string) string {
+func Url(p ...string) string {
 	baseUrl := conf.BaseUrl
 	u, err := url.Parse(baseUrl)
 	if err != nil {
 		panic(err)
 	}
 
-	u.Path = path.Join(u.Path, p)
+	u.Path = path.Join(u.Path, path.Join(p...))
 	return u.String()
 }

@@ -90,9 +90,9 @@ func compileStories()  {
 			panic(err)
 		}
 
-		urlFunc := func() func(p string) string {
+		urlFunc := func() func(p ...string) string {
 			if len(conf.BaseUrl) == 0 {
-				return func(p string) string { return path.Join("../", p) }
+				return func(p ...string) string { return path.Join("../", path.Join(p...)) }
 			}
 			return Url
 		}()
