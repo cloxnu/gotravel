@@ -2,7 +2,6 @@ package main
 
 import (
 	"embed"
-	"github.com/russross/blackfriday/v2"
 	"html/template"
 	"io/ioutil"
 	"os"
@@ -77,11 +76,14 @@ func compileStories()  {
 			panic(err)
 		}
 
-		renderer := blackfriday.NewHTMLRenderer(blackfriday.HTMLRendererParameters{
-			AbsolutePrefix: conf.BaseUrl,
-			HeadingIDPrefix: "title-anchor-",
-		})
-		outputHTML := blackfriday.Run(storyFile, blackfriday.WithExtensions(blackfriday.AutoHeadingIDs), blackfriday.WithRenderer(renderer))
+		//renderer := blackfriday.NewHTMLRenderer(blackfriday.HTMLRendererParameters{
+		//	AbsolutePrefix: conf.BaseUrl,
+		//	HeadingIDPrefix: "title-anchor-",
+		//})
+		//blackfriday.New(blackfriday.WithExtensions(blackfriday.AutoHeadingIDs), blackfriday.WithRenderer(renderer))
+		//outputHTML := blackfriday.Run(storyFile, blackfriday.WithExtensions(blackfriday.AutoHeadingIDs), blackfriday.WithRenderer(renderer))
+
+		outputHTML := Render(&story, storyFile)
 
 		file, err := os.Create(path.Join(story.Dir, "index.html"))
 		if err != nil {
