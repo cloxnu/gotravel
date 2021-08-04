@@ -20,11 +20,19 @@ type Story struct {
 
 func (s *Story) Path(p ...string) string {
 	p = append([]string{conf.Content, s.Dir}, p...)
-	return StoryRelativeUrl(p...)
+	return Url(p...)
 }
 
 func (s *Story) CoverPath() string {
+	if len(s.Cover) == 0 {
+		return ""
+	}
 	return s.Path(s.Cover)
+}
+
+func (s *Story) StoryRelativePath(p ...string) string {
+	p = append([]string{conf.Content, s.Dir}, p...)
+	return StoryRelativeUrl(p...)
 }
 
 func LoadStories() []Story {

@@ -55,12 +55,12 @@
     <img src="" id="cover-img"/>
     <span id="cover-shadow"></span>
     <div id="head-text">
-        <div id="title"></div>
-        <div id="class"></div>
+        <div id="title">{{ .Story.Title }}</div>
+        <div id="class">{{ .Story.Class }}</div>
     </div>
 </div>
 <div id="info">
-    <span id="story-date"></span>
+    <span id="story-date">{{ .Story.StoryDate }}</span>
 {{/*    <?php include_once "template/cdnbutton.php"?>*/}}
     <div id="image-num-div" onclick="change_image_num()">
         <img id="image-num-img" src="{{ Url .Res.Story.image }}"/>

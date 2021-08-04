@@ -26,7 +26,7 @@ func (r *HTMLRenderer) RenderNode(w io.Writer, node *blackfriday.Node, entering 
 func Render(story *Story, content []byte) []byte {
 	r := &HTMLRenderer{
 		UrlProcessor: func(input []byte) []byte {
-			return []byte(story.Path(string(input)))
+			return []byte(story.StoryRelativePath(string(input)))
 		},
 		HTMLRenderer: blackfriday.NewHTMLRenderer(blackfriday.HTMLRendererParameters{
 			HeadingIDPrefix: "title-anchor-",
