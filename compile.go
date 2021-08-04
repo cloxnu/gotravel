@@ -76,13 +76,6 @@ func compileStories()  {
 			panic(err)
 		}
 
-		//renderer := blackfriday.NewHTMLRenderer(blackfriday.HTMLRendererParameters{
-		//	AbsolutePrefix: conf.BaseUrl,
-		//	HeadingIDPrefix: "title-anchor-",
-		//})
-		//blackfriday.New(blackfriday.WithExtensions(blackfriday.AutoHeadingIDs), blackfriday.WithRenderer(renderer))
-		//outputHTML := blackfriday.Run(storyFile, blackfriday.WithExtensions(blackfriday.AutoHeadingIDs), blackfriday.WithRenderer(renderer))
-
 		outputHTML := Render(&story, storyFile)
 
 		file, err := os.Create(path.Join(story.Dir, "index.html"))
@@ -90,15 +83,8 @@ func compileStories()  {
 			panic(err)
 		}
 
-		urlFunc := func() func(p ...string) string {
-			if len(conf.BaseUrl) == 0 {
-				return func(p ...string) string { return path.Join("../", path.Join(p...)) }
-			}
-			return Url
-		}()
-
 		err = tmpl.Funcs(template.FuncMap{
-			"Url": urlFunc,
+			"Url": StoryRelativeUrl,
 		}).ExecuteTemplate(file, "story.gohtml", StoryData{Conf: &conf, Res: &res, Story: &story, Content: template.HTML(outputHTML)})
 		if err != nil {
 			panic(err)

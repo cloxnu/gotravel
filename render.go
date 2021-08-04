@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/russross/blackfriday/v2"
 	"io"
 	"regexp"
@@ -20,7 +19,6 @@ func (r *HTMLRenderer) RenderNode(w io.Writer, node *blackfriday.Node, entering 
 		node.Literal = re.ReplaceAllFunc(node.Literal, func(bytes []byte) []byte {
 			return []byte(string(bytes) + string(r.UrlProcessor(bytes[5:])) + "/")
 		})
-		fmt.Println(string(node.Literal))
 	}
 	return r.HTMLRenderer.RenderNode(w, node, entering)
 }

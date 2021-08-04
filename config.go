@@ -33,6 +33,14 @@ func Url(p ...string) string {
 		panic(err)
 	}
 
-	u.Path = path.Join(u.Path, path.Join(p...))
+	p = append([]string{u.Path}, p...)
+	u.Path = path.Join(p...)
 	return u.String()
+}
+
+func StoryRelativeUrl(p ...string) string {
+	if len(conf.BaseUrl) == 0 {
+		p = append([]string{"../"}, p...)
+	}
+	return Url(p...)
 }
