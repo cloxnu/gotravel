@@ -3,6 +3,7 @@ package main
 import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
+	"path"
 )
 
 type Story struct {
@@ -35,6 +36,13 @@ func (s *Story) StoryRelativePath(p ...string) string {
 	return StoryRelativeUrl(p...)
 }
 
+func (s *Story) StoryRelativeCoverPath() string {
+	if len(s.Cover) == 0 {
+		return ""
+	}
+	return s.StoryRelativePath(s.Cover)
+}
+
 func LoadStories() []Story {
 	stories := make([]Story, 0)
 	
@@ -63,7 +71,7 @@ func LoadStories() []Story {
 }
 
 func LoadStory(dir string) *Story {
-	configFilePath := conf.Content + dir + "/info.yaml"
+	configFilePath := path.Join(conf.Content, dir, "info.yaml")
 	if IsFileExist(configFilePath) {
 		story := &Story{}
 		configFile, err := ioutil.ReadFile(configFilePath)

@@ -106,6 +106,12 @@ function load_page() {
     //     baseUrl: baseURL
     // });
 
+    // detect all_heading
+    document.querySelectorAll('h2, h4').forEach((ele) => {
+        let level = ele.localName === 'h2' ? 2 : 4
+        all_heading.push({text: ele.innerText, level: level, id: ele.id, pos: 0})
+    })
+
     // thumbnail image onclick
     let all_img = document.querySelectorAll("#content img");
     all_img.forEach(function (img) {

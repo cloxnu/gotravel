@@ -25,6 +25,7 @@ type StoryData struct {
 	Res *Res
 	Story *Story
 	Content template.HTML
+	AssociatedStories []Story
 }
 
 func Compile()  {
@@ -83,9 +84,14 @@ func compileStories()  {
 			panic(err)
 		}
 
+		associatedStories := make([]Story, 0)
+		for _, storyDir := range story.Associated {
+			associatedStories = append(associatedStories, *LoadStory(storyDir))
+		}
+
 		err = tmpl.Funcs(template.FuncMap{
 			"Url": StoryRelativeUrl,
-		}).ExecuteTemplate(file, "story.gohtml", StoryData{Conf: &conf, Res: &res, Story: &story, Content: template.HTML(outputHTML)})
+		}).ExecuteTemplate(file, "story.gohtml", StoryData{Conf: &conf, Res: &res, Story: &story, Content: template.HTML(outputHTML), AssociatedStories: associatedStories})
 		if err != nil {
 			panic(err)
 		}
