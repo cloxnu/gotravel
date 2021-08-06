@@ -33,7 +33,8 @@ func Compile()  {
 
 	var err error
 	tmpl, err = template.New("all_go_html").Funcs(template.FuncMap{
-		"Url": func(path string) string { return conf.BaseUrl + path },
+		"Url": Url,
+		"mod": func(i, j int) bool { return i % j == 0 },
 	}).ParseFS(templateFS, "template/*.gohtml")
 	if err != nil {
 		panic(err)
@@ -59,6 +60,7 @@ func compileHome()  {
 
 	err = tmpl.Funcs(template.FuncMap{
 		"Url": Url,
+		"mod": func(i, j int) bool { return i % j == 0 },
 	}).ExecuteTemplate(file, "home.gohtml", HomeData{Conf: &conf, Top: LoadStory(conf.Top), Res: &res, Stories: stories})
 	if err != nil {
 		panic(err)
@@ -91,6 +93,7 @@ func compileStories()  {
 
 		err = tmpl.Funcs(template.FuncMap{
 			"Url": StoryRelativeUrl,
+			"mod": func(i, j int) bool { return i % j == 0 },
 		}).ExecuteTemplate(file, "story.gohtml", StoryData{Conf: &conf, Res: &res, Story: &story, Content: template.HTML(outputHTML), AssociatedStories: associatedStories})
 		if err != nil {
 			panic(err)

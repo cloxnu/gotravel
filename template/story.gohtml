@@ -77,9 +77,9 @@
     <p id="associated-title">还想再看看？</p>
     <div id="associated-blogs">
         {{ range $idx, $ele := .AssociatedStories }}
-            <div id="blog-{{$idx}}-div" class="cover-style-2 ${reverse_class} blog-class-{{.Class}}"
-                 style="--style2-h-in-w500: {{ if eq (len $ele.Cover) 0 }} 50vh {{ else }} 100vh {{ end }}">
-                <hr class="cover-hr" style="opacity: {{ if eq $idx 0 }} 0 {{ else }} 1 {{ end }}">
+            <div id="blog-{{$idx}}-div" class="cover-style-2 {{ if not (mod $idx 2) -}} reverse {{- end }} blog-class-{{.Class}}"
+                 style="--style2-h-in-w500: {{ if eq (len $ele.Cover) 0 -}} 50vh {{- else -}} 100vh {{- end }}">
+                <hr class="cover-hr" style="opacity: {{ if eq $idx 0 -}} 0 {{- else -}} 1 {{- end }}">
                 <a id="blog-{{$idx}}-cover-link" class="cover-image-link transition" href="{{ .Dir }}" style="display: {{ if eq (len .Cover) 0 }} none {{ else }} block {{ end }}">
                     <img src="{{ .StoryRelativeCoverPath }}" id="blog-{{$idx}}-cover" class="cover-image"/>
                 </a>
