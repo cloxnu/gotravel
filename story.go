@@ -43,6 +43,15 @@ func (s *Story) StoryRelativeCoverPath() string {
 	return s.StoryRelativePath(s.Cover)
 }
 
+func (s *Story) ClassificationColor() string {
+	switch s.Class {
+	case "travel": return "--orange"
+	case "life": return "--teal"
+	case "inspiration": return "--indigo"
+	default: return "--foreground-color"
+	}
+}
+
 func LoadStories() []Story {
 	stories := make([]Story, 0)
 	

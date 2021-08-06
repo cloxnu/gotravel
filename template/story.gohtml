@@ -84,7 +84,7 @@
                     <img src="{{ .StoryRelativeCoverPath }}" id="blog-{{$idx}}-cover" class="cover-image"/>
                 </a>
                 <div id="blog-{{$idx}}-text" class="cover-text">
-                    <span id="blog-{{$idx}}-class" class="cover-class" style="color: var(--orange)">{{ .Class }}</span>
+                    <span id="blog-{{$idx}}-class" class="cover-class" style="color: var({{ .ClassificationColor | css }})">{{ .Class }}</span>
                     <a id="blog-{{$idx}}-title" href="../{{ .Dir }}" class="cover-title transition">{{ .Title }}</a>
                     <span id="blog-{{$idx}}-date" class="cover-date">{{ .StoryDate }}</span>
                     <a id="blog-{{$idx}}-desc" href="../{{ .Dir }}" class="cover-desc transition">{{ .Description }}</a>
