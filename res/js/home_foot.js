@@ -72,7 +72,12 @@ function class_btn_clicked(name) {
     document.getElementById(`class-btn-${name}`).classList.add("active");
     current_classification = name;
 
-    load_blogs();
+    document.getElementById('blog-div').classList.remove(`class-filter-${classification_items.travel}`)
+    document.getElementById('blog-div').classList.remove(`class-filter-${classification_items.life}`)
+    document.getElementById('blog-div').classList.remove(`class-filter-${classification_items.inspiration}`)
+
+    if (name !== 'all') document.getElementById('blog-div').classList.add(`class-filter-${name}`)
+    // load_blogs();
 }
 
 function layout_btn_clicked(name) {

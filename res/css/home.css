@@ -423,6 +423,18 @@ div#layout-div {
     -webkit-user-select: none;
 }
 
+.class-filter-travel .blog-class-life, .class-filter-travel .blog-class-inspiration {
+    display: none;
+}
+
+.class-filter-life .blog-class-travel, .class-filter-life .blog-class-inspiration {
+    display: none;
+}
+
+.class-filter-inspiration .blog-class-travel, .class-filter-inspiration .blog-class-life {
+    display: none;
+}
+
 .cover-image {
     z-index: 10;
 }
