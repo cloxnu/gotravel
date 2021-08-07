@@ -3,6 +3,7 @@ package main
 import (
 	"io"
 	"os"
+	"path"
 )
 
 func CopyRes(dir string)  {
@@ -11,13 +12,13 @@ func CopyRes(dir string)  {
 		return
 	}
 
-	err = os.MkdirAll("res/" + dir, os.ModePerm)
+	err = os.MkdirAll(path.Join("res/", dir), os.ModePerm)
 	if err != nil {
 		panic(err)
 	}
 
 	for _, entry := range entries {
-		_, err = CopyResFile("res/" + dir + "/" + entry.Name())
+		_, err = CopyResFile(path.Join("res/", dir, entry.Name()))
 		if err != nil {
 			panic(err)
 		}

@@ -61,7 +61,7 @@ func LoadStories() []Story {
 	}
 
 	for _, dir := range storyDir {
-		configFilePath := conf.Content + dir.Name() + "/info.yaml"
+		configFilePath := path.Join(conf.Content, dir.Name(), "/info.yaml")
 		if dir.IsDir() && IsFileExist(configFilePath) {
 			story := &Story{}
 			configFile, err := ioutil.ReadFile(configFilePath)
