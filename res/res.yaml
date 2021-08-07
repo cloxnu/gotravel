@@ -1,5 +1,3 @@
-base_url: https://cdn.jsdelivr.net/gh/cloxnu/travelblog@2021022802/
-base_url1: ""
 home:
   travel_dog_icon_home: res/home/travelDogIconHome.png
   travel_dog_icon_home_white: res/home/travelDogIconHome_white.png
