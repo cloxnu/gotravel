@@ -4,6 +4,7 @@ title: The new page
 cover: res/img1.png
 description: The new page, the new life.
 content: content.md
+priority: 20200826
 story_date: 2020/08/26
 creation_date: 2020/08/26 10:00
 modification_date: 2020/08/26 11:00

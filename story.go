@@ -4,6 +4,7 @@ import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"path"
+	"sort"
 )
 
 type Story struct {
@@ -13,6 +14,7 @@ type Story struct {
 	Cover string `yaml:"cover"`
 	Description string `yaml:"description"`
 	Content string `yaml:"content"`
+	Priority int64 `yaml:"priority"`
 	StoryDate string `yaml:"story_date"`
 	CreationDate string `yaml:"creation_date"`
 	ModificationDate string `yaml:"modification_date"`
@@ -75,6 +77,10 @@ func LoadStories() []Story {
 			stories = append(stories, *story)
 		}
 	}
+
+	sort.Slice(stories, func(i, j int) bool {
+		return stories[i].Priority > stories[j].Priority
+	})
 
 	return stories
 }
